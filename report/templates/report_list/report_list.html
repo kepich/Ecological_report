@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+
+{% block title %}
+	Reports - {{ block.super }}
+{% endblock %}
+
+{% block site_body %}
+	<h1>List of reports: </h1>
+
+	<div class="card text-info">
+		<h5 class="card-header">PH info:</h5>
+		<div class="card-body">
+			<p class="card-text">Amount: {{amount}}</p>
+			<p class="card-text">Mean: {{mean}}</p>
+			<p class="card-text">min: {{min}}</p>
+			<p class="card-text">max: {{max}}</p>
+			<p class="card-text">50%: {{quant}}</p>
+		</div>
+	</div>
+
+	{% for report in reports %}
+	<div class="card">
+		<h5 class="card-header">{{ report.date }}</h5>
+  		<div class="card-body">
+  			<h5 class="card-title">{{ report.place }}</h5>
+    		<p class="card-text">About: {{ report.comment }}</p>
+    		<a href="{% url 'report_url' slug=report.slug %}" class="btn btn-primary">Read more</a>
+  		</div>
+	</div>
+
+	{% endfor %}
+
+
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	Delete report - "{{ report.date|date}}" - {{ block.super }}
+{% endblock %}
+
+{% block site_body %}
+	<form action="{{ report.get_delete_url}}" method="post">
+		{% csrf_token %}
+
+		<h3>Are you shure to want to delete <b>{{ report.date }}</b>?</h3>
+
+		<button type="submit" name="button" class="btn btn-danger">Yes</button>
+		<a href="{{ report.get_absolute_url}}" class="btn btn-primary">Cancel</a>
+
+	</form>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+
+{% block title %}
+	Reports - {{ block.super }}
+{% endblock %}
+
+{% block site_body %}
+	<h1>Report details: </h1>
+
+	<div class="card">
+		<h5 class="card-header">{{ report_details.date }}</h5>
+  		<div class="card-body">
+  			<h5 class="card-title">{{ report_details.place }}</h5>
+    		<p class="card-text">PH: {{ report_details.ph }}</p>
+    		<p class="card-text">About: {{ report_details.comment }}</p>
+  		</div>
+  		<a href="{% url 'edit_report' slug=report_details.slug %}" class="btn btn-primary">Edit</a>
+  		<a href="{% url 'delete_report' slug=report_details.slug %}" class="btn btn-danger">Delete</a>
+	</div>
+
+
+{% endblock %}
+
+{% block button-back %}	
+	<div class="alert alert-dark" role="alert">
+	  <a href="{% url 'report_list' %}" class="alert-link"> 
+	  		Back 
+		</a>
+	</div>
+{% endblock %}
