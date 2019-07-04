@@ -26,7 +26,7 @@ class ReportDetail(View):
 	"""docstring for ReportDetail"""
 	def get(self, request, slug):
 		report_details = get_object_or_404(Report, slug__iexact=slug)
-		return render(request, 'report_list/report_detail.html', context={'report_details': report_details, 'adm': report_details, 'detail': True})
+		return render(request, 'report_list/report_detail.html', context={'report_details': report_details})
 
 class ReportCreate(View):
 	def get(self, request):
